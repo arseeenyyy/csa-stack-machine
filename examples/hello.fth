@@ -9,7 +9,7 @@ variable port 1
         dup         \ STACK[addr; char; char] 
         0 = not     \ STACK[addr; char; flag]
         if 
-            port out    \ STACK[addr] 
+            port @ out    \ STACK[addr] 
             1 +         \ STACK[addr + 1]
         then
         dup @ 0 =   \ STACK[addr + 1; flag] 
