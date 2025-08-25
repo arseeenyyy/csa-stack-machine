@@ -20,4 +20,3 @@ variable port 1
 
 print_str
 halt
-

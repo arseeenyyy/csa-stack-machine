@@ -170,4 +170,3 @@ pub fn is_arg_instr(opcode: &Opcode) -> bool {
         Opcode::LoadAddr 
     )
 }
-
