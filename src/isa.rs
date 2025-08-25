@@ -1,3 +1,5 @@
+use std::Option;
+
 pub enum Opcode {
     // base operations 
     Lit, 
@@ -113,4 +115,48 @@ pub fn u8_to_instr(num: u8) -> Opcode {
         0xFF => Opcode::Halt,
         0x00 => Opcode::Nop,
     }
+}
+
+pub fn str_to_opcode(s: &str) -> Option<Opcode> {
+    match s.to_uppercase().as_str() {
+        "LIT" => Some(Opcode::Lit),
+        "DUP" => Some(Opcode::Dup),
+        "DROP" => Some(Opcode::Drop),
+        "SWAP" => Some(Opcode::Swap),
+        "OVER" => Some(Opcode::Over),
+        
+        "ADD" => Some(Opcode::Add),
+        "SUB" => Some(Opcode::Sub),
+        "MUL" => Some(Opcode::Mul),
+        "DIV" => Some(Opcode::Div),
+        "MOD" => Some(Opcode::Mod),
+        "AND" => Some(Opcode::And),
+        "OR" => Some(Opcode::Or),
+        "EQ" => Some(Opcode::Eq),
+        "<" => Some(Opcode::Lt),
+        ">" => Some(Opcode::Gr),
+        
+        "STORE" => Some(Opcode::Store),
+        "FETCH" => Some(Opcode::Fetch),
+        "VARIABLE" => Some(Opcode::Variable),
+        
+        "IN" => Some(Opcode::In),
+        "OUT" => Some(Opcode::Out),
+        
+        "IF" => Some(Opcode::If),
+        "THEN" => Some(Opcode::Then),
+        "CALL" => Some(Opcode::Call),
+        "BEGIN" => Some(Opcode::Begin),
+        "UNTIL" => Some(Opcode::Until),
+        
+        "LOADADDR" => Some(Opcode::LoadAddr),
+        "RET" => Some(Opcode::Ret),
+        "HALT" => Some(Opcode::Halt),
+        "NOP" => Some(Opcode::Nop),
+        
+        _ => None,
+    }
+}
+pub fn is_instruction(s: &str) -> bool {
+    str_to_opcode(s).is_some()
 }
