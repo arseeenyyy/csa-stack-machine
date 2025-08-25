@@ -1,6 +1,8 @@
+use csa_stack_machine::isa::*;
 
 
 
 fn main() {
-    println!("hello");
+    let opcode = str_to_opcode("lit").unwrap();
+    println!("{:?}", opcode);
 }

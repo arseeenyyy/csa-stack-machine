@@ -1,5 +1,5 @@
-use std::Option;
 
+#[derive(Debug)]
 pub enum Opcode {
     // base operations 
     Lit, 
@@ -114,6 +114,7 @@ pub fn u8_to_instr(num: u8) -> Opcode {
         0xFE => Opcode::Ret,
         0xFF => Opcode::Halt,
         0x00 => Opcode::Nop,
+        _ => Opcode::Nop,
     }
 }
 
@@ -160,3 +161,13 @@ pub fn str_to_opcode(s: &str) -> Option<Opcode> {
 pub fn is_instruction(s: &str) -> bool {
     str_to_opcode(s).is_some()
 }
+
+pub fn is_arg_instr(opcode: &Opcode) -> bool {
+    matches! (
+        opcode, 
+        Opcode::Lit | 
+        Opcode::Call | 
+        Opcode::LoadAddr 
+    )
+}
+
