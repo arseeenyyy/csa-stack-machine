@@ -4,3 +4,11 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+
+[[bin]]
+name = "translator"
+path = "src/bin/translator.rs"
+
+[[bin]]
+name = "machine"
+path = "src/bin/machine.rs"
